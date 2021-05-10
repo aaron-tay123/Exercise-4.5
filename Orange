@@ -1,0 +1,91 @@
+package FRUITS;
+
+public class Orange extends Fruit implements rateofDiscount {
+
+	private String color;
+	private int price;
+	private int quantity;
+	
+
+	public Orange(String name, String c, int p, int q) { //constructor with argument
+		super(name);//called method in superclass with passing parameter
+		color=c;
+		price=p;
+	    quantity=q;
+	    
+	   //System.out.println("Orange constructor is invoked");
+	
+	    if(quantity==50) {
+	    Totalcalories();
+	    totalPrice();
+	    System.out.println("If the quantity of the orange is equal to 50, the total calories will be " + Totalcalories() + " calories" );
+	    System.out.println("Price: RM" + p);
+	    System.out.println("Quantity: " + q + " units");
+	    System.out.println("The total price will be RM" + totalPrice());
+	    }
+	    
+	    else if(quantity>50 && quantity<100) {
+	    int qq=60;
+	    double pr = 3.99;
+	    Totalcalories(qq);
+	    totalPrice(pr);
+	    System.out.println("Price: RM" + pr);
+	    System.out.println("Quantity: " + qq + " units");
+	    System.out.println("If the quantity of the orange is between 50 and 100, the total calories will be " + Totalcalories(qq) + " calories");
+	    System.out.println("The total price will be RM" + totalPrice(pr));
+	    }
+	    
+	    else {
+	    int qq = 150;
+	    int ca = 60;
+	    double pr = 4.99;
+	    double d;
+	    d = Discount();
+	    Totalcalories(qq, ca);
+	    totalPrice(pr,d);
+	    System.out.println("Price: RM " + pr);
+	    System.out.println("Quantity: " + qq + " units");
+	    System.out.println("If the quantity of the orange is more than 100, the total calories will be " + Totalcalories(qq,ca) + " calories");
+	    System.out.println("The total price will be RM" + totalPrice(pr,d));
+	    }
+	}
+	public String Color() {
+		return color;
+	}
+	public double Discount() {
+		return 0.2;
+	}
+	public int totalPrice() { 
+		return price*quantity;
+	}
+	
+	public double totalPrice(double pr) {
+		return pr*60;
+	}
+	
+	public double totalPrice(double pr, double d) {
+		return (pr*(1-d))*150;
+	}
+	public int Totalcalories() { //method for overloading without parameter
+		return 60* quantity;
+	}
+	
+	public int Totalcalories(int qq) {//method for overloading with 1 parameter
+		return 60*qq;
+	}
+	
+	public int Totalcalories(int qq, int ca) { //method for overloading with 2 parameter
+		return qq*ca;
+	}
+	
+	public String printInfo() {
+		return "Boosts your immune system, your body's defense against germs.";
+	}
+	
+	public String toString() { //overriding method
+		return "Color: " + color + 
+				"\n" + printInfo();
+				
+	}
+
+}
