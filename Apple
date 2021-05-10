@@ -1,0 +1,73 @@
+package FRUITS;
+
+public class Apple extends Fruit{
+
+	protected double price;
+	protected int quantity;
+
+	
+	public Apple(String name, int q, double p) { //constructor with argument
+		super(name);//called method in superclass with passing parameter
+		quantity = q;
+		price = p;
+		
+		//System.out.println("Apple constructor is invoked");
+		
+	if(quantity < 10) {
+	   Totalprice(); //overloading with no arguments
+	   System.out.println(name);
+	   System.out.println("Price: RM " + p);
+	   System.out.println("Quantity: " + q + " units");
+	   System.out.println("If the quantity LESS than 10, Total price: RM" + Totalprice());
+  
+	}
+	else if (quantity > 10 && quantity < 100) {
+		double pp=2.99;
+		System.out.println(name);
+		System.out.println("Price: RM " + pp);
+		System.out.println("Quantity: " + q + " units");
+		System.out.println("If the quantity MORE than 10, you will get a cheaper price.");
+		System.out.println("Total price: RM" + Totalprice(pp));
+	}
+	
+		else {
+		double pp = 1.99;
+		double dd;
+		dd = Discount();
+		Totalprice(dd,pp); //overloading with 2 arguments
+		System.out.println(name);
+		System.out.println("Price: RM " + pp);
+		System.out.println("Quantity: " + quantity + " units");
+		System.out.println("Discount: " + dd);
+		System.out.println("If the quantity MORE than 100, you will get a 25% discount.");
+		System.out.println("Total price: RM" + Totalprice(dd,pp));
+	}
+	
+}
+
+	   public double Discount() {
+		   return 0.25;
+	   }
+	   
+       public double Totalprice() {
+	      return this.price *quantity;
+	
+     }
+
+      public double Totalprice(double pp) {
+	      return pp *quantity;
+     }
+
+      public double Totalprice(double dd, double pp) {
+	      return (pp*(1-dd))* quantity;
+     }
+
+      public String printInfo() {
+  		return "Apple is a type of fruit.";
+  	}
+  	
+  	public String toString() { //overriding method
+  		return super.toString()
+  				+ "\n" + printInfo();
+    }
+}
