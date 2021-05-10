@@ -1,0 +1,22 @@
+package FRUITS;
+
+public class RedApple extends Apple {
+
+	private String colour;
+	
+	public RedApple(String name, int q, double p, String c) {
+		super(name, q, p);
+		this.colour = c;
+		
+		//System.out.println("Red Apple constructor is invoked");
+	}
+	
+	public String colour() {
+		return this.colour;
+	}
+	
+	public String toString() {
+		return "Colour : " + colour;
+	}
+
+}
