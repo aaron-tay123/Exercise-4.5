@@ -1,0 +1,6 @@
+package FRUITS;
+
+public interface rateofDiscount {
+
+	public double Discount();
+}
