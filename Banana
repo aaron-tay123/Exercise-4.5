@@ -1,0 +1,78 @@
+package FRUITS;
+
+public class Banana extends Fruit implements rateofDiscount {
+
+	private char vitA;
+	private int price;
+	private int quantity;
+	private char size;
+	
+
+	public Banana(String name, char vA, int p, int q, char s) { //constructor with argument
+		super(name);//called method in superclass with passing parameter
+		vitA=vA;
+		price=p;
+		quantity=q;
+		
+		System.out.println("Banana constructor is invoked");
+		
+	
+		
+	if(size=='S') {
+	  Totalprice(); //overloading with no argument
+	  System.out.println("Price: RM" + p);
+	  System.out.println("Quantity: " + q + "units");
+	  System.out.println("If the size of banana is small, the total price will be RM" + Totalprice());
+	  
+	}
+	
+	else if (size=='M') {
+	  double pr = 5.99;
+	  Totalprice(pr);
+	  System.out.println("Price: RM" + pr);
+	  System.out.println("Quantity: " + q + " units");
+	  System.out.println("If the size of banana is medium, the total price will be RM" + Totalprice(pr));
+	}
+	
+	else {
+	  double pr = 6.99;
+	  double dis;
+	  dis = Discount();
+	  Totalprice(pr,dis);
+	  System.out.println("Price: RM" + pr);
+	  System.out.println("Quantity: " + q + "units");
+	  System.out.println("If the size of banana is large, the total price will be RM" + Totalprice(pr,dis));
+		
+	}
+}
+	public double Discount() {
+		return 0.2;
+	}
+			
+	public char VitA() {
+		return vitA;
+	}
+	
+	public double Totalprice() {
+		return price*quantity;
+	}
+	
+	public double Totalprice(double pr) {
+		return (pr*(1-Discount()))*quantity;
+	}
+	
+	public double Totalprice(double pr, double dis) {
+		return (pr*(1-dis))*quantity;
+	}
+	public String printInfo() {
+		return "Bananas Contain Nutrients That Moderate Blood Sugar Levels.";
+	}
+	public String toString() {
+		return super.toString()
+				+"\nDoes banana has vitamin A (Y/N): " + vitA
+				+"\n" + printInfo();
+				
+	}
+	
+}
+
